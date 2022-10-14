@@ -149,24 +149,33 @@ class Triangle:
             return (Triangle.length(self.intersection1(a, b), b)
                     + Triangle.length(self.intersection2(a, b), b)
                     + Triangle.length(self.intersection3(a, b), b))/2
-        elif Triangle.is_intersect(a, b, self.p, self.q) and \
-                Triangle.is_intersect(a, b, self.g, self.q) and \
-        Triangle.is_intersect(a, b, self.g, self.p):
+        elif Triangle.is_intersect(a, b, self.p, self.q) \
+                and Triangle.is_intersect(a, b, self.g, self.q) \
+                and Triangle.is_intersect(a, b, self.g, self.p):
             return (Triangle.length(self.intersection1(a, b),
                                     self.intersection2(a, b))
                     + Triangle.length(self.intersection2(a, b),
                                       self.intersection3(a, b))
                     + Triangle.length(self.intersection3(a, b),
                                       self.intersection1(a, b)))/2
-        elif self.is_equal_1(a) or self.is_equal_1(b) and \
-                Triangle.is_intersect(a, b, self.g, self.q):
+        elif self.is_equal_1(a) \
+                and Triangle.is_intersect(a, b, self.g, self.q):
             return Triangle.length(a, self.intersection1(a, b))
-        elif self.is_equal_2(a) or self.is_equal_2(b) and \
-                Triangle.is_intersect(a, b, self.g, self.p):
+        elif self.is_equal_1(b) \
+                and Triangle.is_intersect(a, b, self.g, self.q):
+            return Triangle.length(b, self.intersection1(a, b))
+        elif self.is_equal_2(a) \
+                and Triangle.is_intersect(a, b, self.g, self.p):
             return Triangle.length(a, self.intersection3(a, b))
-        elif self.is_equal_3(a) or self.is_equal_3(b) and \
-                Triangle.is_intersect(a, b, self.g, self.q):
+        elif self.is_equal_2(b) \
+                and Triangle.is_intersect(a, b, self.g, self.p):
+            return Triangle.length(b, self.intersection3(a, b))
+        elif self.is_equal_3(a) \
+                and Triangle.is_intersect(a, b, self.p, self.q):
             return Triangle.length(a, self.intersection2(a, b))
+        elif self.is_equal_3(b) \
+                and Triangle.is_intersect(a, b, self.p, self.q):
+            return Triangle.length(b, self.intersection2(a, b))
         else:
             return Triangle.length(self.intersection1(a, b),
                                    self.intersection2(a, b)) \
