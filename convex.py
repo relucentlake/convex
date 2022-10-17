@@ -144,7 +144,7 @@ class Triangle:
         elif self.inside(a) and self.is_convex(a, b):
             return (Triangle.length(self.intersection1(a, b), a)
                     + Triangle.length(self.intersection2(a, b), a)
-                    + Triangle.length(self.intersection3(a, a), b))/2
+                    + Triangle.length(self.intersection3(a, b), a))/2
         elif self.inside(b) and self.is_convex(a, b):
             return (Triangle.length(self.intersection1(a, b), b)
                     + Triangle.length(self.intersection2(a, b), b)
